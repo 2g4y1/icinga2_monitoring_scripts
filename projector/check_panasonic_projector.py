@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 # Testet with Panasonic PT-VZ570 and DZ870E  
 # Check webinterface for warnings.
 # Usage: check_panasonic_projector.py IP Username
@@ -34,17 +34,17 @@ if 'OK' in beamer_status[1]: #Fan
     if 'OK' in beamer_status[7]: #Lamp remain time
         if 'OK' in beamer_status[9]: #Lamp Status
             if 'OK' in beamer_status[13]: #Air Filter
-                print('OK - ' + args.hostname + ' is fine.')
+                print('OK - Projector is fine.')
                 exit(0)
             elif 'FAILED' in beamer_status[13]:
-                print('CRITICAL - ' + args.hostname + ' Air filter failure')
+                print('CRITICAL - Projector Air filter failure')
                 exit(1)
         elif 'FAILED' in beamer_status[9]:
-            print('CRITICAL - ' + args.hostname + ' Lamp status failure')
+            print('CRITICAL - Projector Lamp status failure')
             exit(1)
     elif 'FAILED' in beamer_status[7]:
-        print('CRITICAL - ' + args.hostname  +' Lamp time error')
+        print('CRITICAL - Projector Lamp time error')
         exit(1)
 elif 'FAILED' in beamer_status[1]:
-    print('CRITICAL - ' + args.hostname + ' Fan failure')
+    print('CRITICAL - Projector Fan failure')
     exit(1)
